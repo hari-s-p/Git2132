@@ -1,0 +1,430 @@
+
+// Colours
+$background-blue: #66c4ff;
+$light-blue: #4271ff8f;
+$shadow-blue: #09b0ce;
+$dark-shadow: #4b8d99;
+$orange: #ffb343;
+$transparent-white: #ffffff8a;
+$error-red: #b30000;
+$success-green: #167a35;
+
+
+// Required SASS mixin
+@mixin button-design {
+    background-color: transparent;
+    color: black;
+    padding: 10px 18px;
+    border: 1px solid black;
+    border-radius: 8px;
+    font-family: "Trirong", serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+* {
+    box-sizing: border-box;
+    font-family: "Trirong", serif;
+}
+
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: $background-blue;
+    color: black;
+}
+
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+    gap: 10px;
+    padding: 5px;
+}
+
+
+// Header
+
+.header {
+    grid-area: header;
+    text-align: center;
+    padding: 20px;
+    background-color: $light-blue;
+    border-radius: 20px;
+    box-shadow: 5px 10px 18px $dark-shadow;
+}
+
+.header h1 {
+    margin: 0;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-size: 48px;
+}
+
+.header p {
+    margin: 10px 0 0;
+    font-size: 18px;
+}
+
+
+// Main content
+
+.content {
+    grid-area: content;
+    padding: 20px;
+    text-align: center;
+    background-color: $transparent-white;
+    box-shadow: 5px 10px 18px $shadow-blue;
+    border-radius: 20px;
+}
+
+
+.gameBoard {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 20px;
+}
+
+
+// Hangman image section
+
+.hangmanDisplay {
+    padding: 20px;
+    background-color: $transparent-white;
+    box-shadow: 5px 10px 18px $shadow-blue;
+    border-radius: 20px;
+    text-align: center;
+}
+
+
+.hangmanDisplay img {
+    width: 90%;
+    max-width: 400px;
+    height: 400px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px auto;
+    animation-name: imageFade;
+    animation-duration: 0.5s;
+}
+
+
+.incorrectGuessText {
+    padding: 10px 15px;
+    background-color: #ffffffb5;
+    border: 1px solid black;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+
+// Game information section
+
+.gameInformation {
+    padding: 20px;
+    background-color: $transparent-white;
+    box-shadow: 5px 10px 18px $shadow-blue;
+    border-radius: 20px;
+}
+
+
+.hintArea,
+.wordArea,
+.guessedLettersArea {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #ffffffb5;
+    border: 1px solid black;
+    border-radius: 12px;
+}
+
+
+.hintArea h2,
+.wordArea h2,
+.guessedLettersArea h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+
+.hintArea p,
+.wordArea p,
+.guessedLettersArea p {
+    margin-bottom: 0;
+}
+
+
+// Hidden word
+
+.wordDisplay {
+    min-height: 60px;
+    font-size: 38px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    word-break: break-word;
+}
+
+
+// Guess form
+
+.guessForm {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: $light-blue;
+    border-radius: 12px;
+}
+
+
+.guessForm label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
+.inputGroup {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.inputGroup input {
+    width: 80px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.inputGroup input:focus {
+    outline: 3px solid rgba(255, 179, 67, 0.6);
+}
+
+
+.inputGroup input:disabled {
+    background-color: #dddddd;
+}
+
+
+// Buttons use the required mixin
+
+#guessButton {
+    @include button-design;
+}
+
+
+#playAgainButton {
+    @include button-design;
+    margin-top: 10px;
+}
+
+
+#guessButton:hover {
+    background-color: $orange;
+}
+
+
+#playAgainButton:hover {
+    background-color: $orange;
+}
+
+
+#guessButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+// Error message
+
+.inputError {
+    min-height: 24px;
+    margin-top: 10px;
+    color: $error-red;
+    font-weight: bold;
+}
+
+
+// Guessed letters
+
+.guessedLettersArea p {
+    min-height: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+
+// Result section
+
+.resultArea {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+
+.resultArea.showResult {
+    display: block;
+    animation-name: resultFade;
+    animation-duration: 0.6s;
+}
+
+
+.resultArea.win {
+    background-color: #c9f7d4;
+    border: 2px solid $success-green;
+}
+
+
+.resultArea.win h2 {
+    color: $success-green;
+}
+
+
+.resultArea.loss {
+    background-color: #ffd2d2;
+    border: 2px solid $error-red;
+}
+
+
+.resultArea.loss h2 {
+    color: $error-red;
+}
+
+
+// Footer
+
+.footer {
+    grid-area: footer;
+    padding: 15px;
+    text-align: center;
+    background-color: $light-blue;
+    border-radius: 20px;
+    box-shadow: 5px 10px 18px $dark-shadow;
+}
+
+
+.footer p {
+    margin: 0;
+}
+
+
+// Animations
+
+@keyframes imageFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes resultFade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+// Tablet layout
+
+@media (max-width: 900px) {
+    .gameBoard {
+        grid-template-columns: 1fr;
+    }
+
+    .hangmanDisplay img {
+        height: 320px;
+    }
+}
+
+
+// Mobile layout
+
+@media (max-width: 600px) {
+    .container {
+        width: 98%;
+        margin: 10px auto;
+        padding: 2px;
+    }
+
+    .header h1 {
+        font-size: 34px;
+    }
+
+    .header p {
+        font-size: 15px;
+    }
+
+    .content,
+    .gameInformation,
+    .hangmanDisplay {
+        padding: 12px;
+    }
+
+    .hangmanDisplay img {
+        width: 100%;
+        height: 260px;
+    }
+
+    .inputGroup {
+        display: block;
+    }
+
+    .inputGroup input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #guessButton,
+    #playAgainButton {
+        width: 100%;
+    }
+
+    .wordDisplay {
+        font-size: 28px;
+        letter-spacing: 5px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .wordDisplay {
+        font-size: 22px;
+        letter-spacing: 3px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+

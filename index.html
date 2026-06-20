@@ -1,39 +1,144 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hangman Game</title>
 
-    <title>My Webpage</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Trirong"
+        >
 
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
-</head>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="javascript/script.js" defer></script>
+    </head>
 
-<body>
+    <body>
+        <div class="container">
 
-    <header>
-        <h1>Website Title</h1>
+            <header class="header">
+                <h1>Hangman</h1>
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
+                <p>
+                    Guess the hidden word before the full hangman is drawn.
+                </p>
+            </header>
 
-    <main>
-        <section>
-            <h2>Page Heading</h2>
-            <p>Your page content goes here.</p>
-        </section>
-    </main>
+            <main class="content">
 
-    <footer>
-        <p>&copy; 2026 Your Name</p>
-    </footer>
+                <section class="gameBoard">
 
-</body>
+                    <div class="hangmanDisplay">
+                        
 
+                        <p class="incorrectGuessText">
+                            Incorrect guesses:
+                            <span id="incorrectGuessDisplay">0</span>
+                            out of 6
+                        </p>
+                    </div>
+
+                    <div class="gameInformation">
+
+                        <div class="hintArea">
+                            <h2>Hint</h2>
+
+                            <p id="hintDisplay">
+                                Loading hint...
+                            </p>
+                        </div>
+
+                        <div class="wordArea">
+                            <h2>Word</h2>
+
+                            <p
+                                id="wordDisplay"
+                                class="wordDisplay"
+                                aria-live="polite"
+                            >
+                                Loading...
+                            </p>
+                        </div>
+
+                        <form id="guessForm" class="guessForm">
+                            <label for="letterInput">
+                                Enter a letter:
+                            </label>
+
+                            <div class="inputGroup">
+                                <input
+                                    id="letterInput"
+                                    name="letter"
+                                    type="text"
+                                    maxlength="1"
+                                    pattern="[A-Za-z]"
+                                    autocomplete="off"
+                                    required
+                                >
+
+                                <button
+                                    id="guessButton"
+                                    type="submit"
+                                >
+                                    Guess
+                                </button>
+                            </div>
+
+                            <p
+                                id="inputError"
+                                class="inputError"
+                                aria-live="polite"
+                            ></p>
+                        </form>
+
+                        <div class="guessedLettersArea">
+                            <h2>Guessed Letters</h2>
+
+                            <p id="guessedLettersDisplay">
+                                None
+                            </p>
+                        </div>
+
+                        <div
+                            id="resultArea"
+                            class="resultArea"
+                            aria-live="polite"
+                        >
+                            <h2 id="resultHeading"></h2>
+
+                            <p id="resultMessage"></p>
+
+                            <button
+                                id="playAgainButton"
+                                type="button"
+                                hidden
+                            >
+                                Play Again
+                            </button>
+                        </div>
+
+                    </div>
+                </section>
+
+            </main>
+
+            <footer class="footer">
+                <div class="footbar">
+                    <p>
+                        Copyright 2026<br>
+                        Created by Hari Saravanan
+                    </p>
+                </div>
+            </footer>
+
+        </div>
+    </body>
 </html>
+```
