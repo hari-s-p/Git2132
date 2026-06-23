@@ -1,0 +1,54 @@
+[
+    {
+        "word": "javascript",
+        "hint": "A programming language commonly used to make websites interactive."
+    },
+    {
+        "word": "computer",
+        "hint": "An electronic device used to process and store information."
+    },
+    {
+        "word": "keyboard",
+        "hint": "A device used to type letters, numbers, and commands."
+    },
+    {
+        "word": "internet",
+        "hint": "A worldwide network that connects computers and devices."
+    },
+    {
+        "word": "browser",
+        "hint": "A program used to visit and view websites."
+    },
+    {
+        "word": "function",
+        "hint": "A reusable block of JavaScript code."
+    },
+    {
+        "word": "variable",
+        "hint": "A named place used to store a value in a program."
+    },
+    {
+        "word": "database",
+        "hint": "An organized collection of stored information."
+    },
+    {
+        "word": "website",
+        "hint": "A group of web pages found under one domain."
+    },
+    {
+        "word": "programming",
+        "hint": "The process of writing instructions for a computer."
+    },
+    {
+        "word": "algorithm",
+        "hint": "A step-by-step set of instructions used to solve a problem."
+    },
+    {
+        "word": "developer",
+        "hint": "A person who creates software, applications, or websites."
+    },
+    {
+        "word": "jeff-parker",
+        "hint": "instructor of this course"
+    }
+]
